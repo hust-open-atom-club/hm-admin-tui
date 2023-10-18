@@ -1,0 +1,13 @@
+export type Configurations = {
+  managerPort: number;
+  composeDir: string;
+}
+
+
+let configs: Configurations;
+
+export const setConfigs = (config: Configurations) => {
+  configs = config;
+}
+
+export const getConfigs = () => configs;
