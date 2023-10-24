@@ -22,6 +22,8 @@ export default function() {
         screen.render();
       }
     };
+    // @ts-ignore
+    radioRefs.current['a']?.check();
     screen.on('keypress', func);
     screen.key('enter', submit);
     return () => {
@@ -70,14 +72,14 @@ export default function() {
       return radioRefs.current[k].checked;
     });
     let content = ""
-    let branch = "";
+    let branch = "stable";
     if (selected.indexOf('a') != -1) content = "all";
     else if (selected.indexOf('b') != -1) content = "page";
     else if (selected.indexOf('c') != -1) content = "cli";
     else if (selected.indexOf('d') != -1) content = "release";
 
-    if (selected.indexOf('m') != -1) branch = "master";
-    else if (selected.indexOf('s') != -1) branch = "stable";
+    // if (selected.indexOf('m') != -1) branch = "master";
+    // else if (selected.indexOf('s') != -1) branch = "stable";
 
     if (content && branch) {
       cicdUpdate(content, branch, logger).catch((e) => {
@@ -98,12 +100,12 @@ export default function() {
         <radiobutton ref={setRadioRef('c')} left="50%" content="C: Cli Tool" {...buttonProps}></radiobutton>
         <radiobutton ref={setRadioRef('d')} left="75%" content="D: Releases" {...buttonProps}></radiobutton>
       </box>
-      <box top={3} content="What branch do you like to update?"></box>
+      {/* <box top={3} content="What branch do you like to update?"></box> */}
 
-      <box top={4}>
-        <radiobutton ref={setRadioRef('m')} left="0" content="M: master" {...buttonProps}></radiobutton>
-        <radiobutton ref={setRadioRef('s')} left="50%" content="S: stable" {...buttonProps}></radiobutton>
-      </box>
+      {/* <box top={4}> */}
+      {/*   <radiobutton ref={setRadioRef('m')} left="0" content="M: master" {...buttonProps}></radiobutton> */}
+      {/*   <radiobutton ref={setRadioRef('s')} left="50%" content="S: stable" {...buttonProps}></radiobutton> */}
+      {/* </box> */}
 
       <box bottom={1} height={1} content="Input characters before colon to select."></box>
       <box bottom={0} height={1} content="Double enter to confirm, all operations will be logged!"></box>

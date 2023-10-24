@@ -1,6 +1,7 @@
 export type Configurations = {
   managerPort: number;
   composeDir: string;
+  logFile: string;
 }
 
 

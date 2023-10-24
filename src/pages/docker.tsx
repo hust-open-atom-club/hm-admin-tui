@@ -30,23 +30,23 @@ export default function() {
   React.useEffect(() => {
     setHelp("s: start.  d:stop.  ")
 
-    const id = setInterval(() => {
-      getContent();
-    }, 2000);
-    getContent();
+    // const id = setInterval(() => {
+    //   getContent();
+    // }, 2000);
+    // getContent();
 
     screen.on('keypress', onKey);
 
     return () => {
       setHelp("");
-      clearInterval(id);
+      // clearInterval(id);
       screen.removeListener('keypress', onKey);
     };
   }, []);
 
   return <>
-    <log ref={log1} border='line' height={10}></log>
-    <log ref={log2} border='line' height="100%-10" top={10}></log>
+    {/* <log ref={log1} border='line' height={10}></log> */}
+    <log ref={log2} border='line' height="100%"></log>
   </>
 
 }

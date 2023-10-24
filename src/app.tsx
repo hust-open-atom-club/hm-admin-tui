@@ -25,12 +25,9 @@ export default function() {
     <GlobalStore.Provider value={{
       help: helpState
     }}>
-      <listbar border='line' mouse height={3} commands={[
-        { text: 'update', callback: () => setPage('update') },
-        { text: 'docker', callback: () => setPage('docker') },
-        { text: 'tunasync', callback: () => setPage('tunasync') },
-        { text: 'access log (To implement)' },
-      ]} />
+      <box border='line' mouse height={3}
+        content='1: update  2:docker  3:tunasync  ' />
+
       <box top={3} width='100%' height='100%-4'>
         {page === 'tunasync' && <Tunasync />}
         {page === 'update' && <Update />}
