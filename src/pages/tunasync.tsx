@@ -22,11 +22,13 @@ export default function() {
     async function getItems() {
       try {
         const wl = await getWorkers(logger);
+        const list = [];
         for (const w of wl) {
           const mirrors = await getMirrors(w.id, logger);
-          if (!cancelled) setMirrors(mirrors.map(m => ({ ...m, worker: w.id })).sort((a, b) =>
+          if (!cancelled) list.push(...mirrors.map(m => ({ ...m, worker: w.id })).sort((a, b) =>
             a.name.localeCompare(b.name)));
         }
+        setMirrors(list);
       }
       catch (e) {
         screen.debug("err fetch list" + e);
