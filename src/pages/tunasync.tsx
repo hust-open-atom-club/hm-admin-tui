@@ -25,9 +25,9 @@ export default function() {
         const list = [];
         for (const w of wl) {
           const mirrors = await getMirrors(w.id, logger);
-          if (!cancelled) list.push(...mirrors.map(m => ({ ...m, worker: w.id })).sort((a, b) =>
-            a.name.localeCompare(b.name)));
+          if (!cancelled) list.push(...mirrors.map(m => ({ ...m, worker: w.id })));
         }
+        list.sort((a, b) => a.name.localeCompare(b.name));
         setMirrors(list);
       }
       catch (e) {
