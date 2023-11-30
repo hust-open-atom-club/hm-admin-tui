@@ -178,7 +178,7 @@ function Main(props: MainProps) {
       if (ch === 'd') disableJob(selectedMirror.worker, selectedMirror?.name, logger).catch(() => { });
       if (ch === 'r') reloadWorker(selectedMirror.worker, logger).catch(() => { });
     }
-    if (ch === 'f') flushAllJob(props.logRef.current?.log).catch(() => { });
+    if (ch === 'f') flushAllJob(logger).catch(() => { });
   };
 
 
